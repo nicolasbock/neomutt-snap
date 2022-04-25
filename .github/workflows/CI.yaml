@@ -1,0 +1,31 @@
+---
+
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@v2
+      - name: Build snap
+        uses: snapcore/action-build@v1
+        id: snapcraft
+      - name: Install neomutt snap
+        run: |
+          sudo snap install --devmode ./neomutt-snap_*.snap
+      - name: Store snap artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: snap
+          path: ${{ steps.snapcraft.outputs.snap }}

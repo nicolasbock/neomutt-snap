@@ -15,6 +15,10 @@ description: |
   * NNTP support.
   * Visual progress bar for slow operations.
   * Trash folder.
+
+  The snap version of neomutt expects configuration files in
+
+      ~/snap/neomutt-snap/common
 website: https://neomutt.org
 contact: https://github.com/nicolasbock/neomutt-snap/issues
 license: Apache-2.0

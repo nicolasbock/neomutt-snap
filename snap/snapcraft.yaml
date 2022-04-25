@@ -15,8 +15,8 @@ description: |
   * NNTP support.
   * Visual progress bar for slow operations.
   * Trash folder.
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+grade: stable
+confinement: strict
 
 apps:
   neomutt:

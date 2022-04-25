@@ -15,6 +15,9 @@ description: |
   * NNTP support.
   * Visual progress bar for slow operations.
   * Trash folder.
+website: https://neomutt.org
+contact: https://github.com/nicolasbock/neomutt-snap/issues
+license: apache-2.0
 grade: stable
 confinement: strict
 

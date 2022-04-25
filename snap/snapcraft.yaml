@@ -24,6 +24,8 @@ confinement: strict
 apps:
   neomutt:
     command: usr/bin/neomutt
+    plugs:
+      - home
 
 parts:
   neomutt:

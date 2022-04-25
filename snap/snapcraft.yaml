@@ -18,6 +18,10 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
+apps:
+  neomutt:
+    command: usr/bin/neomutt
+
 parts:
   neomutt:
     plugin: dump
@@ -28,9 +32,11 @@ parts:
       - libncurses-dev
       - libxml2-utils
       - gettext
-      - tclsh
+      - tcl
       - xsltproc
     override-build: |
       set -e -u -x
       ./configure --disable-doc --prefix=/usr
       make install DESTDIR=${SNAPCRAFT_PART_INSTALL}
+    stage-packages:
+      - libidn11

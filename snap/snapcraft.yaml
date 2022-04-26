@@ -1,6 +1,6 @@
 name: neomutt-snap
 base: core20
-version: '20220415'
+adopt-info: neomutt
 summary: NeoMutt is a command line mail reader (or MUA)
 description: |
   Command line mail reader based on Mutt, with added features Neomutt supports
@@ -43,6 +43,9 @@ parts:
       - gettext
       - tcl
       - xsltproc
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe)"
     override-build: |
       set -e -u -x
       ./configure --disable-doc --prefix=/usr

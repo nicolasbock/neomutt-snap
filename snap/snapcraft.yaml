@@ -40,6 +40,7 @@ apps:
 
 parts:
   neomutt:
+    after: [neomutt-test-files]
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
     source-tag: '20220415'
@@ -67,6 +68,7 @@ parts:
     override-build: |
       set -e -u -x
       ./configure \
+        --testing \
         --gpgme \
         --gnutls \
         --gss \
@@ -80,6 +82,9 @@ parts:
         --tokyocabinet \
         --disable-doc \
         --prefix=/usr
+      make
+      NEOMUTT_TEST_DIR="/root/parts/neomutt-test-files/build" \
+        make test
       make install DESTDIR=${SNAPCRAFT_PART_INSTALL}
     stage-packages:
       - libassuan0
@@ -90,3 +95,11 @@ parts:
       - liblmdb0
       - libqdbm14
       - libtokyocabinet9
+  neomutt-test-files:
+    plugin: dump
+    source: https://github.com/neomutt/neomutt-test-files.git
+    source-commit: 'dc9fb32a701eb9dce4fda93c27da1d9b5be23231'
+    override-build: |
+      set -e -u -x
+      export NEOMUTT_TEST_DIR="${SNAPCRAFT_PART_BUILD}/build"
+      ./setup.sh

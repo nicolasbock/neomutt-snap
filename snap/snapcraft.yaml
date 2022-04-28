@@ -37,10 +37,15 @@ parts:
     source: https://github.com/neomutt/neomutt.git
     source-tag: '20220415'
     build-packages:
-      - libidn11-dev
-      - libncurses-dev
-      - libxml2-utils
       - gettext
+      - libgnutls28-dev
+      - libgpgme-dev
+      - libgss-dev
+      - libidn11-dev
+      - libkrb5-dev
+      - libncurses-dev
+      - libsasl2-dev
+      - libxml2-utils
       - tcl
       - xsltproc
     override-pull: |
@@ -48,7 +53,16 @@ parts:
       snapcraftctl set-version "$(git describe)"
     override-build: |
       set -e -u -x
-      ./configure --disable-doc --prefix=/usr
+      ./configure \
+        --gpgme \
+        --gnutls \
+        --gss \
+        --sasl \
+        --ssl \
+        --disable-doc \
+        --prefix=/usr
       make install DESTDIR=${SNAPCRAFT_PART_INSTALL}
     stage-packages:
+      - libassuan0
+      - libgpgme11
       - libidn11

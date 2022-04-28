@@ -27,6 +27,8 @@ confinement: strict
 
 apps:
   neomutt:
+    environment:
+      HOME: ${SNAP_USER_COMMON}
     command: usr/bin/neomutt
     plugs:
       - home

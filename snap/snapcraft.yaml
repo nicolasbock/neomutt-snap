@@ -41,13 +41,19 @@ parts:
     source-tag: '20220415'
     build-packages:
       - gettext
+      - libdb-dev
+      - libgdbm-dev
       - libgnutls28-dev
       - libgpgme-dev
       - libgss-dev
       - libidn11-dev
       - libkrb5-dev
+      - libkyotocabinet-dev
+      - liblmdb-dev
       - libncurses-dev
+      - libqdbm-dev
       - libsasl2-dev
+      - libtokyocabinet-dev
       - libxml2-utils
       - tcl
       - xsltproc
@@ -62,10 +68,21 @@ parts:
         --gss \
         --sasl \
         --ssl \
+        --bdb \
+        --gdbm \
+        --kyotocabinet \
+        --lmdb \
+        --qdbm \
+        --tokyocabinet \
         --disable-doc \
         --prefix=/usr
       make install DESTDIR=${SNAPCRAFT_PART_INSTALL}
     stage-packages:
       - libassuan0
+      - libgdbm6
       - libgpgme11
       - libidn11
+      - libkyotocabinet16v5
+      - liblmdb0
+      - libqdbm14
+      - libtokyocabinet9

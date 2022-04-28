@@ -19,6 +19,10 @@ description: |
   The snap version of neomutt expects configuration files in
 
       ~/snap/neomutt-snap/common
+
+  The main configuration file for example is expected to be in
+
+      ~/snap/neomutt-snap/common/.neomuttrc
 website: https://neomutt.org
 contact: https://github.com/nicolasbock/neomutt-snap/issues
 license: Apache-2.0

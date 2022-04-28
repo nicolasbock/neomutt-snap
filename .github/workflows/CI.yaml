@@ -19,8 +19,9 @@ jobs:
         uses: snapcore/action-build@v1
         id: snapcraft
       - name: Install neomutt snap
+        run: sudo snap install --devmode ./neomutt-snap_*.snap
+      - name: Test snap
         run: |
-          sudo snap install --devmode ./neomutt-snap_*.snap
           snap connections neomutt-snap
           neomutt-snap.neomutt --help
       - name: Store snap artifact

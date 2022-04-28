@@ -30,6 +30,7 @@ apps:
     command: usr/bin/neomutt
     plugs:
       - home
+      - network
 
 parts:
   neomutt:

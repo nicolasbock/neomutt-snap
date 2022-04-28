@@ -24,6 +24,8 @@ jobs:
       - name: Install neomutt snap
         run: |
           sudo snap install --devmode ./neomutt-snap_*.snap
+          snap connections neomutt-snap
+          neomutt-snap.neomutt --help
       - name: Store snap artifact
         uses: actions/upload-artifact@v2
         with:

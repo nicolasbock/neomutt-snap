@@ -20,7 +20,7 @@ description: |
 
       ~/snap/neomutt-snap/common
 
-  The main configuration file for example is expected to be in
+  The main configuration file, for example, has to be placed in
 
       ~/snap/neomutt-snap/common/.neomuttrc
 website: https://neomutt.org

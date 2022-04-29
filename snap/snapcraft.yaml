@@ -43,7 +43,7 @@ parts:
     after: [neomutt-test-files]
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
-    source-tag: '20220415'
+    source-tag: '20220429'
     build-packages:
       - gettext
       - libdb-dev

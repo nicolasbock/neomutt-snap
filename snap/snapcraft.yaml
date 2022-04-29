@@ -88,7 +88,7 @@ parts:
         --disable-doc \
         --prefix=/usr
       make
-      NEOMUTT_TEST_DIR="/root/parts/neomutt-test-files/build" \
+      NEOMUTT_TEST_DIR="$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../neomutt-test-files/build)" \
         make test
       make install DESTDIR=${SNAPCRAFT_PART_INSTALL}
     stage-packages:

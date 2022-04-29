@@ -26,6 +26,8 @@ description: |
 website: https://neomutt.org
 contact: https://github.com/nicolasbock/neomutt-snap/issues
 license: Apache-2.0
+issues: https://github.com/nicolasbock/neomutt-snap/issues
+source-code: https://github.com/nicolasbock/neomutt-snap
 grade: stable
 confinement: strict
 

@@ -55,7 +55,9 @@ parts:
       - libkrb5-dev
       - libkyotocabinet-dev
       - liblmdb-dev
+      - liblua5.3-dev
       - libncurses-dev
+      - libnotmuch-dev
       - libqdbm-dev
       - libsasl2-dev
       - libtokyocabinet-dev
@@ -74,6 +76,9 @@ parts:
         --gss \
         --sasl \
         --ssl \
+        --lua \
+        --notmuch \
+        --mixmaster \
         --bdb \
         --gdbm \
         --kyotocabinet \
@@ -89,12 +94,17 @@ parts:
     stage-packages:
       - libassuan0
       - libgdbm6
+      - libgmime-3.0-0
       - libgpgme11
       - libidn11
       - libkyotocabinet16v5
       - liblmdb0
+      - liblua5.3-0
+      - libnotmuch5
       - libqdbm14
+      - libtalloc2
       - libtokyocabinet9
+      - libxapian30
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

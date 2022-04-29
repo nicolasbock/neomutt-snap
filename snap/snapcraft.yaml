@@ -1,4 +1,4 @@
-name: neomutt-snap
+name: neomutt
 base: core20
 adopt-info: neomutt
 summary: NeoMutt is a command line mail reader (or MUA)
@@ -18,11 +18,11 @@ description: |
 
   The snap version of neomutt expects configuration files in
 
-      ~/snap/neomutt-snap/common
+      ~/snap/neomutt/common
 
   The main configuration file, for example, has to be placed in
 
-      ~/snap/neomutt-snap/common/.neomuttrc
+      ~/snap/neomutt/common/.neomuttrc
 website: https://neomutt.org
 contact: https://github.com/nicolasbock/neomutt-snap/issues
 license: Apache-2.0

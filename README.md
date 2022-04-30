@@ -1,12 +1,12 @@
 # neomutt-snap
 
-[![neomutt-snap](https://snapcraft.io/neomutt-snap/badge.svg)](https://snapcraft.io/neomutt-snap)
-[![neomutt-snap](https://snapcraft.io/neomutt-snap/trending.svg?name=0)](https://snapcraft.io/neomutt-snap)
+[![neomutt](https://snapcraft.io/neomutt/badge.svg)](https://snapcraft.io/neomutt)
+[![neomutt](https://snapcraft.io/neomutt/trending.svg?name=0)](https://snapcraft.io/neomutt)
 
 ## Configuration
 
 Place your `neomutt` configuration file in
 
 ```
-~/snap/neomutt-snap/common
+~/snap/neomutt-snap/current
 ```

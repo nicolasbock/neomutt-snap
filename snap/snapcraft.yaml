@@ -9,7 +9,7 @@ description: |
   `POP` and `IMAP` support, `SSL` encryption and `SASL` authentication,
   threading and `GPG` support.
  
-  In addition, neomutt provides:
+  In addition, the neomutt snap provides:
   * Notmuch: a mail indexing tools that provides advanced features such as
     full-text search, thread reconstruction and added features.
   * Color attachment headers using regex, just like mail bodies.
@@ -17,6 +17,7 @@ description: |
   * NNTP support.
   * Visual progress bar for slow operations.
   * Trash folder.
+  * Google's `oauth2.py` script (https://github.com/google/gmail-oauth2-tools)
 
   The snap version of neomutt expects configuration files in
 
@@ -42,6 +43,8 @@ apps:
     plugs:
       - home
       - network
+  oauth2:
+    command: bin/oauth2.py
 
 parts:
   neomutt:
@@ -118,3 +121,23 @@ parts:
       set -e -u -x
       export NEOMUTT_TEST_DIR="${SNAPCRAFT_PART_BUILD}/build"
       ./setup.sh
+  google-oauth-scripts:
+    after:
+      - google-oauth-scripts-patches
+    plugin: python
+    source: https://github.com/google/gmail-oauth2-tools.git
+    source-commit: 'e3229155a4037267ce40f1a3a681f53221aa4d8d'
+    override-build: |
+      set -e -u -x
+      patch -p1 < ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches/0001-Transition-to-Python3.patch
+      sed --in-place \
+        --expression 's:^#!/usr/bin/python.*$:#!/usr/bin/python3:' \
+        python/oauth2.py
+      install --mode 0755 -D \
+        --target-directory "${SNAPCRAFT_PART_INSTALL}/bin" \
+        python/oauth2.py
+    stage:
+      - bin/oauth2.py
+  google-oauth-scripts-patches:
+    plugin: dump
+    source: .

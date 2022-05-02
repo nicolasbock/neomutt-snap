@@ -17,7 +17,9 @@ description: |
   * NNTP support.
   * Visual progress bar for slow operations.
   * Trash folder.
-  * Google's `oauth2.py` script (https://github.com/google/gmail-oauth2-tools)
+  * [Google's `oauth2.py` script](https://github.com/google/gmail-oauth2-tools),
+    see https://neomutt.org/guide/optionalfeatures#6-%C2%A0oauthbearer-and-xoauth2-support
+    for usage details.
 
   The snap version of neomutt expects configuration files in
 

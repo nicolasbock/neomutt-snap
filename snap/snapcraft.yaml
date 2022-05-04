@@ -31,6 +31,26 @@ description: |
 
   Note that this directory is versioned and is backed up when the snap is
   removed (see https://snapcraft.io/docs/data-locations#heading--user).
+
+  ## OAuth2 Support
+
+  Follow the direction in
+  https://neomutt.org/guide/optionalfeatures#6-%C2%A0oauthbearer-and-xoauth2-support
+  to create Client ID and Client Secrets. Create a refresh token,
+
+      neomutt.oauth2 --generate_oauth2_token
+
+  And add the following to the Neomutt configuration file,
+
+      set imap_authenticators="oauthbearer"
+      set imap_oauth_refresh_command="oauth2 --quiet \
+        --user=[email_address] \
+        --client_id=[client_id] \
+        --client_secret=[client_secret] \
+        --refresh_token=[refresh_token
+
+  Note that within the Neomutt configuration file, the `oauth2` script can be
+  called without specifying a path.
 website: https://neomutt.org
 contact: https://github.com/nicolasbock/neomutt-snap/issues
 license: Apache-2.0
@@ -46,7 +66,7 @@ apps:
       - home
       - network
   oauth2:
-    command: bin/oauth2.py
+    command: bin/oauth2
     plugs:
       - network
 
@@ -133,13 +153,14 @@ parts:
     source-commit: 'e3229155a4037267ce40f1a3a681f53221aa4d8d'
     override-build: |
       set -e -u -x
-      patch -p1 < ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches/0001-Transition-to-Python3.patch
-      patch -p1 < ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches/0002-More-Python-3-fixes.patch
-      install --mode 0755 -D \
-        --target-directory "${SNAPCRAFT_PART_INSTALL}/bin" \
-        python/oauth2.py
+      PATCHES=$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches)
+      patch -p1 < ${PATCHES}/0001-Transition-to-Python3.patch
+      patch -p1 < ${PATCHES}/0002-More-Python-3-fixes.patch
+      install --mode 0755 -D -T \
+        python/oauth2.py \
+        ${SNAPCRAFT_PART_INSTALL}/bin/oauth2
     stage:
-      - bin/oauth2.py
+      - bin/oauth2
   google-oauth-scripts-patches:
     plugin: dump
     source: .

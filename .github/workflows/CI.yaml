@@ -24,6 +24,7 @@ jobs:
         run: |
           snap connections neomutt
           neomutt --help
+          neomutt.oauth2 --help
       - name: Store snap artifact
         uses: actions/upload-artifact@v2
         with:

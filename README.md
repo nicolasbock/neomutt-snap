@@ -1,5 +1,6 @@
 # neomutt-snap
 
+[![CI](https://github.com/nicolasbock/neomutt-snap/actions/workflows/CI.yaml/badge.svg)](https://github.com/nicolasbock/neomutt-snap/actions/workflows/CI.yaml)
 [![neomutt](https://snapcraft.io/neomutt/badge.svg)](https://snapcraft.io/neomutt)
 [![neomutt](https://snapcraft.io/neomutt/trending.svg?name=0)](https://snapcraft.io/neomutt)
 

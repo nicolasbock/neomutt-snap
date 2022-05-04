@@ -1,7 +1,7 @@
 From 27bdb2b47341dc0e98e8b6533efe5dd428b21ec6 Mon Sep 17 00:00:00 2001
 From: Nicolas Bock <nicolasbock@gmail.com>
 Date: Sun, 1 May 2022 06:55:38 -0600
-Subject: [PATCH] Transition to Python3
+Subject: [PATCH 1/2] Transition to Python3
 
 Signed-off-by: Nicolas Bock <nicolasbock@gmail.com>
 ---

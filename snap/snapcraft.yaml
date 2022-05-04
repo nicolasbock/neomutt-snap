@@ -47,6 +47,8 @@ apps:
       - network
   oauth2:
     command: bin/oauth2.py
+    plugs:
+      - network
 
 parts:
   neomutt:
@@ -132,9 +134,7 @@ parts:
     override-build: |
       set -e -u -x
       patch -p1 < ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches/0001-Transition-to-Python3.patch
-      sed --in-place \
-        --expression 's:^#!/usr/bin/python.*$:#!/usr/bin/python3:' \
-        python/oauth2.py
+      patch -p1 < ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches/0002-More-Python-3-fixes.patch
       install --mode 0755 -D \
         --target-directory "${SNAPCRAFT_PART_INSTALL}/bin" \
         python/oauth2.py

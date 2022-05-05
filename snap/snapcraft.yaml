@@ -20,6 +20,7 @@ description: |
   * Google's `oauth2.py` script (https://github.com/google/gmail-oauth2-tools), see
     https://neomutt.org/guide/optionalfeatures#6-%C2%A0oauthbearer-and-xoauth2-support
     for usage details.
+  * The `lynx` text web browser.
 
   The snap version of neomutt expects configuration files in
 
@@ -137,6 +138,10 @@ parts:
       - libtalloc2
       - libtokyocabinet9
       - libxapian30
+  neomutt-support:
+    plugin: nil
+    stage-packages:
+      - lynx
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git
@@ -155,7 +160,6 @@ parts:
       set -e -u -x
       PATCHES=$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches)
       patch -p1 < ${PATCHES}/0001-Transition-to-Python3.patch
-      patch -p1 < ${PATCHES}/0002-More-Python-3-fixes.patch
       install --mode 0755 -D -T \
         python/oauth2.py \
         ${SNAPCRAFT_PART_INSTALL}/bin/oauth2

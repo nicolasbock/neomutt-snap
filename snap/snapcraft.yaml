@@ -162,8 +162,10 @@ parts:
     source-commit: 'e3229155a4037267ce40f1a3a681f53221aa4d8d'
     override-build: |
       set -e -u -x
-      PATCHES=$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build/patches)
-      patch -p1 < ${PATCHES}/0001-Transition-to-Python3.patch
+      PATCHES=$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../google-oauth-scripts-patches/build)
+      for patch in ${PATCHES}/*.patch; do
+        patch -p1 < ${patch}
+      done
       install --mode 0755 -D -T \
         python/oauth2.py \
         ${SNAPCRAFT_PART_INSTALL}/bin/oauth2
@@ -171,4 +173,4 @@ parts:
       - bin/oauth2
   google-oauth-scripts-patches:
     plugin: dump
-    source: .
+    source: patches

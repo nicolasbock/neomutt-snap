@@ -20,7 +20,7 @@ description: |
   * Google's `oauth2.py` script (https://github.com/google/gmail-oauth2-tools), see
     https://neomutt.org/guide/optionalfeatures#6-%C2%A0oauthbearer-and-xoauth2-support
     for usage details.
-  * The `lynx` text web browser.
+  * The `lynx`, `links`, `links2`, and `elinks` text web browsers.
 
   The snap version of neomutt expects configuration files in
 
@@ -142,6 +142,9 @@ parts:
     plugin: nil
     stage-packages:
       - lynx
+      - links
+      - links2
+      - elinks
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

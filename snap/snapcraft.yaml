@@ -145,6 +145,7 @@ parts:
       - links
       - links2
       - elinks
+      - vim
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

@@ -33,11 +33,16 @@ description: |
   Note that this directory is versioned and is backed up when the snap is
   removed (see https://snapcraft.io/docs/data-locations#heading--user).
 
-  ## OAuth2 Support
+  OAuth2 Support
 
   Follow the direction in
   https://neomutt.org/guide/optionalfeatures#6-%C2%A0oauthbearer-and-xoauth2-support
-  to create Client ID and Client Secrets. Create a refresh token,
+  or simply run
+
+      neomutt.oauth2 --help
+
+  to get instructions on how to create Client ID and Client Secrets. Create a
+  refresh token,
 
       neomutt.oauth2 --generate_oauth2_token
 

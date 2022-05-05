@@ -141,11 +141,13 @@ parts:
   neomutt-support:
     plugin: nil
     stage-packages:
-      - lynx
+      - elinks
       - links
       - links2
-      - elinks
+      - lynx
       - vim
+      - nvi
+      - neovim
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

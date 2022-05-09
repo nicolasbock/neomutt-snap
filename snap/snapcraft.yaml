@@ -150,9 +150,10 @@ parts:
       - links
       - links2
       - lynx
-      - vim
-      - nvi
       - neovim
+      - nvi
+      - vim
+      - w3m
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

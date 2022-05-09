@@ -70,6 +70,7 @@ apps:
     command: usr/bin/neomutt
     plugs:
       - home
+      - locale-control
       - network
   oauth2:
     command: bin/oauth2

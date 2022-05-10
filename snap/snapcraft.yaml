@@ -138,6 +138,7 @@ parts:
     stage-packages:
       - libassuan0
       - libgdbm6
+      - libgflags2.2
       - libgmime-3.0-0
       - libgpgme11
       - libidn11
@@ -146,6 +147,8 @@ parts:
       - liblua5.3-0
       - libnotmuch5
       - libqdbm14
+      - librocksdb5.17
+      - libsnappy1v5
       - libtalloc2
       - libtokyocabinet9
       - libxapian30

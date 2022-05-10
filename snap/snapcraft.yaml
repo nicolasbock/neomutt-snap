@@ -84,6 +84,8 @@ parts:
     source: https://github.com/neomutt/neomutt.git
     source-tag: '20220429'
     build-packages:
+      - docbook-simple
+      - docbook-xsl
       - gettext
       - libdb-dev
       - libgdbm-dev
@@ -124,7 +126,6 @@ parts:
         --lmdb \
         --qdbm \
         --tokyocabinet \
-        --disable-doc \
         --prefix=/usr
       make
       NEOMUTT_TEST_DIR="$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../neomutt-test-files/build)" \

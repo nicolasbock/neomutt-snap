@@ -132,6 +132,7 @@ parts:
         --tokyocabinet \
         --rocksdb \
         --prefix=/usr
+      sed -i -e 's:\(SYSCONFDIR\) ".*":\1 "/snap/neomutt/current/etc":' config.h
       make
       NEOMUTT_TEST_DIR="$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../neomutt-test-files/build)" \
         make test

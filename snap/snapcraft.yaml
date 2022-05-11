@@ -163,6 +163,7 @@ parts:
       - lynx
       - neovim
       - nvi
+      - sendmail
       - urlscan
       - urlview
       - vim

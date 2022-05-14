@@ -101,7 +101,8 @@ parts:
       - libncurses-dev
       - libnotmuch-dev
       - libqdbm-dev
-      - librocksdb-dev
+      - try:
+        - librocksdb-dev
       - libsasl2-dev
       - libtokyocabinet-dev
       - libxml2-utils
@@ -112,6 +113,17 @@ parts:
       snapcraftctl set-version "$(git describe)"
     override-build: |
       set -e -u -x
+      declare -a HEADER_CACHES=(
+        --bdb
+        --gdbm
+        --kyotocabinet
+        --lmdb
+        --qdbm
+        --tokyocabinet
+      )
+      if dpkg -l librocksdb-dev; then
+        HEADER_CACHES=( ${HEADER_CACHES[@]} --rocksdb )
+      fi
       ./configure \
         --testing \
         --gpgme \
@@ -122,15 +134,9 @@ parts:
         --lua \
         --notmuch \
         --mixmaster \
-        --bdb \
-        --gdbm \
-        --kyotocabinet \
-        --lmdb \
-        --qdbm \
         --disable-idn \
         --idn2 \
-        --tokyocabinet \
-        --rocksdb \
+        ${HEADER_CACHES[@]} \
         --prefix=/usr
       sed -i -e 's:\(SYSCONFDIR\) ".*":\1 "/snap/neomutt/current/etc":' config.h
       make
@@ -149,7 +155,8 @@ parts:
       - liblua5.3-0
       - libnotmuch5
       - libqdbm14
-      - librocksdb5.17
+      - try:
+        - librocksdb5.17
       - libsnappy1v5
       - libtalloc2
       - libtokyocabinet9

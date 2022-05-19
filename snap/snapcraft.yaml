@@ -86,7 +86,7 @@ parts:
     after: [neomutt-test-files]
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
-    source-tag: '20220429'
+    source-branch: main
     build-packages:
       - docbook-simple
       - docbook-xsl

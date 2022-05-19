@@ -78,6 +78,9 @@ apps:
     plugs:
       - network
 
+environment:
+  LOCPATH: $SNAP/usr/lib/locale
+
 parts:
   neomutt:
     after: [neomutt-test-files]
@@ -161,6 +164,7 @@ parts:
       - libtalloc2
       - libtokyocabinet9
       - libxapian30
+      - locales-all
   neomutt-support:
     plugin: nil
     stage-packages:

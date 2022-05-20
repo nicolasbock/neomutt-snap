@@ -11,3 +11,7 @@ Place your `neomutt` configuration file in
 ```
 ~/snap/neomutt-snap/current
 ```
+
+For more information please visit the snap store:
+
+https://snapcraft.io/neomutt

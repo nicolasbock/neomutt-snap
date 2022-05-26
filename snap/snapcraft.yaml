@@ -172,6 +172,7 @@ parts:
       - links
       - links2
       - lynx
+      - manpages
       - neovim
       - nvi
       - sendmail

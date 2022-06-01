@@ -85,6 +85,7 @@ apps:
 
 environment:
   LOCPATH: $SNAP/usr/lib/locale
+  VIMRUNTIME: $SNAP/usr/share/vim/vim81
 
 parts:
   neomutt:
@@ -187,7 +188,8 @@ parts:
       - w3m
     override-prime: |
       snapcraftctl prime
-      ln -s vim.basic usr/bin/vim
+      ln -sf vim.basic usr/bin/vim
+      ln -sf vim.basic usr/bin/view
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

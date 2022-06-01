@@ -185,6 +185,9 @@ parts:
       - urlview
       - vim
       - w3m
+    override-prime: |
+      snapcraftctl prime
+      ln -s vim.basic usr/bin/vim
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

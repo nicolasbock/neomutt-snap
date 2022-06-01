@@ -216,3 +216,5 @@ parts:
   google-oauth-scripts-patches:
     plugin: dump
     source: patches
+    stage:
+      - -./**

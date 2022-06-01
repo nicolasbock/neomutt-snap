@@ -183,6 +183,7 @@ parts:
       - neovim
       - nvi
       - sendmail
+      - tnftp
       - urlscan
       - urlview
       - vim
@@ -192,6 +193,7 @@ parts:
       snapcraftctl prime
       ln -sf vim.basic usr/bin/vim
       ln -sf vim.basic usr/bin/view
+      ln -sf tnftp usr/bin/ftp
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git

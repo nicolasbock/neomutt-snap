@@ -1,5 +1,5 @@
 name: neomutt
-base: core22
+base: core20
 adopt-info: neomutt
 summary: NeoMutt is a command line mail reader (or MUA)
 description: |

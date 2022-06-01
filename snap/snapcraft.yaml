@@ -118,6 +118,7 @@ parts:
       - tcl
       - xsltproc
     override-pull: |
+      set -e -u -x
       snapcraftctl pull
       snapcraftctl set-version "$(git describe)"
     override-build: |
@@ -187,6 +188,7 @@ parts:
       - vim
       - w3m
     override-prime: |
+      set -e -u -x
       snapcraftctl prime
       ln -sf vim.basic usr/bin/vim
       ln -sf vim.basic usr/bin/view

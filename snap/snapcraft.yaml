@@ -20,8 +20,18 @@ description: |
   * Google's `oauth2.py` script (https://github.com/google/gmail-oauth2-tools), see
     https://neomutt.org/guide/optionalfeatures#6-%C2%A0oauthbearer-and-xoauth2-support
     for usage details.
-  * The `w3m`, `lynx`, `links`, `links2`, and `elinks` text web browsers.
-  * `urlview` and `urlscan`.
+  * Text-based Web browsers:
+    * `w3m`
+    * `lynx`
+    * `links`
+    * `links2`
+    * `elinks`
+  * Utilities:
+    * `urlview`
+    * `urlscan`
+  * Editors:
+    * `vim`
+    * `nvim`
 
   The snap version of neomutt expects configuration files in
 

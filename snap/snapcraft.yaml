@@ -1,5 +1,5 @@
 name: neomutt
-base: core20
+base: core22
 adopt-info: neomutt
 summary: NeoMutt is a command line mail reader (or MUA)
 description: |
@@ -112,15 +112,15 @@ parts:
       - libgnutls28-dev
       - libgpgme-dev
       - libgss-dev
-      - libidn11-dev
+      - libidn-dev
       - libkrb5-dev
       - libkyotocabinet-dev
       - liblmdb-dev
-      - liblua5.3-dev
+      - liblua5.4-dev
       - libncurses-dev
       - libnotmuch-dev
       - libqdbm-dev
-      - try:
+      - on amd64:
         - librocksdb-dev
       - libsasl2-dev
       - libtokyocabinet-dev
@@ -169,14 +169,14 @@ parts:
       - libgflags2.2
       - libgmime-3.0-0
       - libgpgme11
-      - libidn11
+      - libidn12
       - libkyotocabinet16v5
       - liblmdb0
-      - liblua5.3-0
+      - liblua5.4-0
       - libnotmuch5
       - libqdbm14
-      - try:
-        - librocksdb5.17
+      - on amd64:
+        - librocksdb6.11
       - libsnappy1v5
       - libtalloc2
       - libtokyocabinet9

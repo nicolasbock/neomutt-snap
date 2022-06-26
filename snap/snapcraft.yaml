@@ -95,14 +95,15 @@ apps:
 
 environment:
   LOCPATH: $SNAP/usr/lib/locale
-  VIMRUNTIME: $SNAP/usr/share/vim/vim81
+  VIMRUNTIME: $SNAP/usr/share/vim/vim82
 
 parts:
   neomutt:
     after: [neomutt-test-files]
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
-    source-branch: main
+    source-commit: 0271d054530ace3c0d48035fea932c3caad1bffa # First bad commit
+    # source-commit: 26ac881cdca2fdd7827bd1dcbf56fa02fabcdd45 # Last good commit
     build-packages:
       - docbook-simple
       - docbook-xsl
@@ -129,8 +130,8 @@ parts:
       - xsltproc
     override-pull: |
       set -e -u -x
-      snapcraftctl pull
-      snapcraftctl set-version "$(git describe)"
+      craftctl default
+      craftctl set version="$(git describe)"
     override-build: |
       set -e -u -x
       declare -a HEADER_CACHES=(
@@ -159,6 +160,7 @@ parts:
         ${HEADER_CACHES[@]} \
         --prefix=/usr
       sed -i -e 's:\(SYSCONFDIR\) ".*":\1 "/snap/neomutt/current/etc":' config.h
+      # make EXTRA_CFLAGS="-g -O0"
       make
       NEOMUTT_TEST_DIR="$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../neomutt-test-files/build)" \
         make test
@@ -200,7 +202,7 @@ parts:
       - w3m
     override-prime: |
       set -e -u -x
-      snapcraftctl prime
+      craftctl default
       ln -sf vim.basic usr/bin/vim
       ln -sf vim.basic usr/bin/view
       ln -sf tnftp usr/bin/ftp

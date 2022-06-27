@@ -102,8 +102,8 @@ parts:
     after: [neomutt-test-files]
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
-    source-commit: 0271d054530ace3c0d48035fea932c3caad1bffa # First bad commit
-    # source-commit: 26ac881cdca2fdd7827bd1dcbf56fa02fabcdd45 # Last good commit
+    # source-commit: 0271d054530ace3c0d48035fea932c3caad1bffa # First bad commit
+    source-commit: 26ac881cdca2fdd7827bd1dcbf56fa02fabcdd45 # Last good commit
     build-packages:
       - docbook-simple
       - docbook-xsl

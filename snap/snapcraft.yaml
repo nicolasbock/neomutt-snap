@@ -99,7 +99,7 @@ environment:
 
 parts:
   neomutt:
-    after: [neomutt-test-files]
+    after: [neomutt-test-files, neomutt-support]
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
     # source-commit: 0271d054530ace3c0d48035fea932c3caad1bffa # First bad commit

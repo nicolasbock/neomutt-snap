@@ -108,6 +108,8 @@ parts:
     build-packages:
       - docbook-simple
       - docbook-xsl
+      - execstack
+      - file
       - gettext
       - libdb-dev
       - libgdbm-dev
@@ -166,6 +168,16 @@ parts:
       NEOMUTT_TEST_DIR="$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../neomutt-test-files/build)" \
         make test
       make install DESTDIR=${SNAPCRAFT_PART_INSTALL}
+    override-prime: |
+      set -e -u -x
+      craftctl default
+      # Clear execstack flag (only relevant on arm)
+      readarray -t files < <(find ${CRAFT_PRIME}/usr/lib \
+        \( -type f -a \! -type l \) \
+        -exec execstack --query '{}' \; | grep -v '^-')
+      for file in "${files[@]}"; do
+        execstack --clear-execstack "$(echo ${file} | awk '{print $2}')"
+      done
     stage-packages:
       - libassuan0
       - libgdbm6

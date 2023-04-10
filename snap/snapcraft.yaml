@@ -76,11 +76,6 @@ source-code: https://github.com/nicolasbock/neomutt-snap
 grade: stable
 confinement: strict
 
-# plugs:
-#   home:
-#   locale-control:
-#   network:
-
 apps:
   neomutt:
     command: usr/bin/neomutt
@@ -102,8 +97,6 @@ parts:
     after: [neomutt-test-files, neomutt-support]
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
-    # source-commit: 0271d054530ace3c0d48035fea932c3caad1bffa # First bad commit
-    # source-commit: 26ac881cdca2fdd7827bd1dcbf56fa02fabcdd45 # Last good commit
     source-branch: main
     build-packages:
       - docbook-simple
@@ -121,14 +114,18 @@ parts:
       - libkyotocabinet-dev
       - liblmdb-dev
       - liblua5.4-dev
+      - liblz4-dev
       - libncurses-dev
       - libnotmuch-dev
       - libqdbm-dev
       - on amd64:
         - librocksdb-dev
       - libsasl2-dev
+      - libssl-dev
+      - libtdb-dev
       - libtokyocabinet-dev
       - libxml2-utils
+      - libzstd-dev
       - tcl
       - xsltproc
     override-pull: |
@@ -149,6 +146,7 @@ parts:
         HEADER_CACHES=( ${HEADER_CACHES[@]} --rocksdb )
       fi
       ./configure \
+        --everything \
         --testing \
         --gpgme \
         --gnutls \
@@ -161,6 +159,7 @@ parts:
         --disable-idn \
         --idn2 \
         ${HEADER_CACHES[@]} \
+        --full-doc \
         --prefix=/usr
       sed -i -e 's:\(SYSCONFDIR\) ".*":\1 "/snap/neomutt/current/etc":' config.h
       # make EXTRA_CFLAGS="-g -O0"
@@ -178,6 +177,10 @@ parts:
       for file in "${files[@]}"; do
         execstack --clear-execstack "$(echo ${file} | awk '{print $2}')"
       done
+      sed --in-place \
+        --expression 's:/usr/share/doc:${SNAP}/usr/share/doc:' \
+        --expression 's:manual.txt:manual.html:' \
+        ${CRAFT_PRIME}/etc/neomuttrc
     stage-packages:
       - libassuan0
       - libgdbm6

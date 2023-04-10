@@ -140,6 +140,7 @@ parts:
         --kyotocabinet
         --lmdb
         --qdbm
+        --tdb
         --tokyocabinet
       )
       if dpkg -l librocksdb-dev; then
@@ -148,7 +149,6 @@ parts:
         HEADER_CACHES=( ${HEADER_CACHES[@]} --disable-rocksdb )
       fi
       ./configure \
-        --everything \
         --testing \
         --gpgme \
         --gnutls \
@@ -161,10 +161,12 @@ parts:
         --disable-idn \
         --idn2 \
         ${HEADER_CACHES[@]} \
+        --lz4 \
+        --zlib \
+        --zstd \
         --full-doc \
         --prefix=/usr
       sed -i -e 's:\(SYSCONFDIR\) ".*":\1 "/snap/neomutt/current/etc":' config.h
-      # make EXTRA_CFLAGS="-g -O0"
       make
       NEOMUTT_TEST_DIR="$(readlink --canonicalize ${SNAPCRAFT_PART_BUILD}/../../neomutt-test-files/build)" \
         make test

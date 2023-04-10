@@ -191,14 +191,17 @@ parts:
       - libkyotocabinet16v5
       - liblmdb0
       - liblua5.4-0
+      - liblz4-1
       - libnotmuch5
       - libqdbm14
       - on amd64:
         - librocksdb6.11
       - libsnappy1v5
       - libtalloc2
+      - libtdb1
       - libtokyocabinet9
       - libxapian30
+      - libzstd1
       - locales-all
   neomutt-support:
     plugin: nil

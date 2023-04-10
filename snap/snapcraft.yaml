@@ -144,6 +144,8 @@ parts:
       )
       if dpkg -l librocksdb-dev; then
         HEADER_CACHES=( ${HEADER_CACHES[@]} --rocksdb )
+      else
+        HEADER_CACHES=( ${HEADER_CACHES[@]} --disable-rocksdb )
       fi
       ./configure \
         --everything \

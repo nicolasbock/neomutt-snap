@@ -180,6 +180,7 @@ parts:
       sed --in-place \
         --expression 's:/usr/share/doc:${SNAP}/usr/share/doc:' \
         --expression 's:manual.txt:manual.html:' \
+        --expression 's:less:w3m:' \
         ${CRAFT_PRIME}/etc/neomuttrc
     stage-packages:
       - libassuan0

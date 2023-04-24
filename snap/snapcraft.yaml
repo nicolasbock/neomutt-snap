@@ -233,7 +233,7 @@ parts:
   neomutt-test-files:
     plugin: dump
     source: https://github.com/neomutt/neomutt-test-files.git
-    source-commit: 'dc9fb32a701eb9dce4fda93c27da1d9b5be23231'
+    source-commit: '34f79ee9d91863a97f6e18700aea51157b8610cf'
     override-build: |
       set -e -u -x
       export NEOMUTT_TEST_DIR="${SNAPCRAFT_PART_BUILD}/build"

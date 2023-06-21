@@ -98,7 +98,6 @@ parts:
     plugin: dump
     source: https://github.com/neomutt/neomutt.git
     source-branch: main
-    # source-branch: devel/fmemopen
     build-packages:
       - docbook-simple
       - docbook-xsl

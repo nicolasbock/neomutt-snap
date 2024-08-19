@@ -119,9 +119,8 @@ parts:
       - libncurses-dev
       - libnotmuch-dev
       - libqdbm-dev
-      - on amd64:
-        - librocksdb-dev
       - libsasl2-dev
+      - libsqlite3-dev
       - libssl-dev
       - libtdb-dev
       - libtokyocabinet-dev
@@ -129,6 +128,8 @@ parts:
       - libzstd-dev
       - tcl
       - xsltproc
+      - on amd64:
+        - librocksdb-dev
     override-pull: |
       set -e -u -x
       craftctl default
@@ -151,21 +152,21 @@ parts:
       fi
       ./configure \
         --testing \
-        --gpgme \
+        --autocrypt \
+        --disable-idn \
+        --full-doc \
         --gnutls \
+        --gpgme \
         --gss \
+        --idn2 \
+        --lua \
+        --lz4 \
+        --notmuch \
         --sasl \
         --ssl \
-        --lua \
-        --notmuch \
-        --mixmaster \
-        --disable-idn \
-        --idn2 \
-        ${HEADER_CACHES[@]} \
-        --lz4 \
         --zlib \
         --zstd \
-        --full-doc \
+        ${HEADER_CACHES[@]} \
         --prefix=/usr
       sed -i -e 's:\(SYSCONFDIR\) ".*":\1 "/snap/neomutt/current/etc":' config.h
       make

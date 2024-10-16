@@ -1,6 +1,6 @@
 name: neomutt
 icon: logo/neomutt.svg
-base: core22
+base: core24
 adopt-info: neomutt
 summary: NeoMutt is a command line mail reader (or MUA)
 description: |
@@ -202,7 +202,7 @@ parts:
       - libnotmuch5
       - libqdbm14
       - on amd64:
-        - librocksdb6.11
+        - librocksdb8.9
       - libsnappy1v5
       - libtalloc2
       - libtdb1

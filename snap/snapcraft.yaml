@@ -206,7 +206,7 @@ parts:
       - libsnappy1v5
       - libtalloc2
       - libtdb1
-      - libtokyocabinet9
+      - libtokyocabinet9t64
       - libxapian30
       - libzstd1
       - locales-all

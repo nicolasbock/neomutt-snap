@@ -190,7 +190,7 @@ parts:
         ${CRAFT_PRIME}/etc/neomuttrc
     stage-packages:
       - libassuan0
-      - libgdbm6
+      - libgdbm6t64
       - libgflags2.2
       - libgmime-3.0-0t64
       - libgpgme11t64
@@ -199,8 +199,8 @@ parts:
       - liblmdb0
       - liblua5.4-0
       - liblz4-1
-      - libnotmuch5
-      - libqdbm14
+      - libnotmuch5t64
+      - libqdbm14t64
       - on amd64:
         - librocksdb8.9
       - libsnappy1v5

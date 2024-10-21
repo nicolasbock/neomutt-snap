@@ -193,7 +193,7 @@ parts:
       - libgdbm6
       - libgflags2.2
       - libgmime-3.0-0
-      - libgpgme11
+      - libgpgme11t64
       - libidn12
       - libkyotocabinet16v5
       - liblmdb0

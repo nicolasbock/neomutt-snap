@@ -192,7 +192,7 @@ parts:
       - libassuan0
       - libgdbm6
       - libgflags2.2
-      - libgmime-3.0-0
+      - libgmime-3.0-0t64
       - libgpgme11t64
       - libidn12
       - libkyotocabinet16v5
